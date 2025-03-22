@@ -19,7 +19,7 @@ namespace Player
 
 	void PlayerService::render() { snake_controller->render(); }
 
-	void PlayerService::spawnPlayer() {}
+	void PlayerService::spawnPlayer() { snake_controller->spawnSnake(); }
 
 	void PlayerService::destroy() { delete(snake_controller); }
 }
