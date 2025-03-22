@@ -28,6 +28,10 @@ namespace Player
 		void initialize(float width, float height, sf::Vector2i pos, Direction dir);
 		void render();
 
-		sf::Vector2f getBodyPartScreenPosition() const;
+		void updatePosition();
+
+		sf::Vector2f getBodyPartScreenPosition();
+		float getRotationAngle();
+		void setDirection(Direction direction);
 	};
 }
