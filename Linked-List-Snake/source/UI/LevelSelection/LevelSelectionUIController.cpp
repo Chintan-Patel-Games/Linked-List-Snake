@@ -70,11 +70,15 @@ namespace UI
 
         void LevelSelectionUIController::level1ButtonCallback()
         {
+            GameService::setGameState(GameState::GAMEPLAY);
+            ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LevelNumber::ONE);
             ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
         }
 
         void LevelSelectionUIController::level2ButtonCallback()
         {
+            GameService::setGameState(GameState::GAMEPLAY);
+            ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LevelNumber::TWO);
             ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
         }
 

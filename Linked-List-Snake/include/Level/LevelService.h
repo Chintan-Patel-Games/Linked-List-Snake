@@ -23,5 +23,8 @@ namespace Level
         void render();
 
         void createLevel(LevelNumber level_to_load);
+
+		float getCellWidth() const;
+		float getCellHeight() const;
     };
 }
