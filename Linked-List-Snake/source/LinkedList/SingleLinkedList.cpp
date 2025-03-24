@@ -30,6 +30,30 @@ namespace LinkedList
 
 	Node* SingleLinkedList::createNode() { return new Node(); }
 
+	void SingleLinkedList::updateNodeDirection(Player::Direction direction_to_set)
+	{
+		Node* cur_node = head_node;
+
+		while (cur_node != nullptr)
+		{
+			Player::Direction previous_direction = cur_node->body_part.getDirection();
+			cur_node->body_part.setDirection(direction_to_set);
+			direction_to_set = previous_direction;
+			cur_node = cur_node->next;
+		}
+	}
+
+	void SingleLinkedList::updateNodePosition()
+	{
+		Node* cur_node = head_node;
+
+		while (cur_node != nullptr)
+		{
+			cur_node->body_part.updatePosition();
+			cur_node = cur_node->next;
+		}
+	}
+
 	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node)
 	{
 		// Extract direction and position for new node calculation
