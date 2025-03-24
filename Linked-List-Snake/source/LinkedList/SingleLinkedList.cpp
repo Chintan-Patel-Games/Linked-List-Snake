@@ -21,7 +21,7 @@ namespace LinkedList
 	{
 		Node* cur_node = head_node;
 
-		while (cur_node != nullptr)     // Traverse through the linked list and render each node's body part
+		while (cur_node != nullptr) // Traverse through the linked list and render each node's body part
 		{
 			cur_node->body_part.render();
 			cur_node = cur_node->next;
@@ -49,7 +49,7 @@ namespace LinkedList
 
 		while (cur_node != nullptr)
 		{
-			cur_node->body_part.updatePosition();
+			cur_node->body_part.move();
 			cur_node = cur_node->next;
 		}
 	}

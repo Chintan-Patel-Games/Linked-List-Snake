@@ -32,6 +32,12 @@ namespace Player
 		bodypart_image->setOriginAtCentre();
 	}
 
+	void BodyPart::move()
+	{
+		grid_position = getNextPosition();
+		updatePosition();
+	}
+
 	void BodyPart::updatePosition()
 	{
 		bodypart_image->setPosition(getBodyPartScreenPosition());
