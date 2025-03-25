@@ -29,5 +29,7 @@ namespace LinkedList
 		void updateNodeDirection(Player::Direction direction_to_set);
 		void updateNodePosition();
 		bool processNodeCollision();
+		void removeNodeAtHead();
+		void removeAllNodes();
 	};
 }
