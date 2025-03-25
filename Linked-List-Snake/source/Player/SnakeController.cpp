@@ -111,6 +111,7 @@ namespace Player
 		current_snake_direction = default_direction;
 		elapsed_duration = 0.f;
 		restart_counter = 0.f;
+		current_input_state = InputState::WAITING;
 	}
 
 	void SnakeController::respawnSnake()
