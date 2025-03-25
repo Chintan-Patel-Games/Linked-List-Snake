@@ -8,7 +8,13 @@ namespace Player
 	enum class SnakeState
 	{
 		ALIVE,
-		DEAD,
+		DEAD
+	};
+
+	enum class InputState
+	{
+		WAITING,
+		PROCESSING
 	};
 
 	class SnakeController
@@ -24,6 +30,7 @@ namespace Player
 		const Direction default_direction = Direction::RIGHT;
 
 		SnakeState current_snake_state;
+		InputState current_input_state;
 		Direction current_snake_direction;
 		LinkedList::SingleLinkedList* single_linked_list;
 
