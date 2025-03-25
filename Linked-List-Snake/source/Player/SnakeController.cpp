@@ -70,13 +70,16 @@ namespace Player
 
 	void SnakeController::processSnakeCollision()
 	{
-		if (single_linked_list->processNodeCollision())
-			current_snake_state = SnakeState::DEAD;
+		if (single_linked_list->processNodeCollision()) { current_snake_state = SnakeState::DEAD; }
 	}
 
 	void SnakeController::moveSnake() { single_linked_list->updateNodePosition(); }
 
-	void SnakeController::handleRestart() {}
+	void SnakeController::handleRestart()
+	{
+		restart_counter += Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		if (restart_counter >= restart_duration) { respawnSnake(); }
+	}
 
 	void SnakeController::spawnSnake()
 	{
@@ -84,9 +87,20 @@ namespace Player
 			single_linked_list->insertNodeAtTail();     // Insert nodes at tail to create the initial snake
 	}
 
-	void SnakeController::reset() {}
+	void SnakeController::reset()
+	{
+		current_snake_state = SnakeState::ALIVE;
+		current_snake_direction = default_direction;
+		elapsed_duration = 0.f;
+		restart_counter = 0.f;
+	}
 
-	void SnakeController::respawnSnake() {}
+	void SnakeController::respawnSnake()
+	{
+		single_linked_list->removeAllNodes();
+		reset();
+		spawnSnake();
+	}
 
 	SnakeState SnakeController::getSnakeState() const { return current_snake_state; }
 
