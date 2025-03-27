@@ -37,28 +37,28 @@ namespace Food
 	{
 		switch (food_type)
 		{
-		case Food::FoodType::APPLE:
+		case FoodType::APPLE:
 			return Config::apple_texture_path;
 
-		case Food::FoodType::MANGO:
+		case FoodType::MANGO:
 			return Config::mango_texture_path;
 
-		case Food::FoodType::ORANGE:
+		case FoodType::ORANGE:
 			return Config::orange_texture_path;
 
-		case Food::FoodType::PIZZA:
+		case FoodType::PIZZA:
 			return Config::pizza_texture_path;
 
-		case Food::FoodType::BURGER:
+		case FoodType::BURGER:
 			return Config::burger_texture_path;
 
-		case Food::FoodType::CHEESE:
+		case FoodType::CHEESE:
 			return Config::cheese_texture_path;
 
-		case Food::FoodType::POISION:
+		case FoodType::POISION:
 			return Config::poision_texture_path;
 
-		case Food::FoodType::ALCOHOL:
+		case FoodType::ALCOHOL:
 			return Config::alcohol_texture_path;
 		}
 	}
