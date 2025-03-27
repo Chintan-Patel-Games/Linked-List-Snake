@@ -16,6 +16,15 @@ namespace Level
 
 	void LevelService::spawnPlayer() { Global::ServiceLocator::getInstance()->getPlayerService()->spawnPlayer(); }
 
+	void LevelService::spawnLevelElements(LevelNumber level_to_load)
+	{
+		float cell_width = level_controller->getCellWidth();
+		float cell_height = level_controller->getCellHeight();
+
+		std::vector<Element::ElementData> element_data_list = level_controller->getElementDataList((int)level_to_load);
+		Global::ServiceLocator::getInstance()->getElementService()->spawnElements(element_data_list, cell_width, cell_height);
+	}
+
 	void LevelService::initialize() { level_controller->initialize(); }
 
 	void LevelService::update() { level_controller->update(); }
@@ -25,6 +34,7 @@ namespace Level
 	void LevelService::createLevel(LevelNumber level_to_load)
 	{
 		current_level = level_to_load;
+		spawnLevelElements(level_to_load);
 		spawnPlayer();
 	}
 

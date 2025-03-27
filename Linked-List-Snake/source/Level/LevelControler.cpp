@@ -26,6 +26,8 @@ namespace Level
 
 	void LevelController::render() { level_view->render(); }
 
+	const std::vector<Element::ElementData>& LevelController::getElementDataList(int level_to_load) const { return level_model->getElementDataList(level_to_load); }
+
 	float LevelController::getCellWidth() const { return level_model->getCellWidth(); }
 
 	float LevelController::getCellHeight() const  { return level_model->getCellHeight(); }
