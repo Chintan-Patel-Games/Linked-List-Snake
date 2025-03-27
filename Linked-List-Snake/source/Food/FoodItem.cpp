@@ -76,4 +76,6 @@ namespace Food
 	void FoodItem::render() { food_image->render(); }
 
 	FoodType FoodItem::getFoodType() const { return food_type; }
+
+	sf::Vector2i FoodItem::getFoodPosition() const { return grid_position; }
 }

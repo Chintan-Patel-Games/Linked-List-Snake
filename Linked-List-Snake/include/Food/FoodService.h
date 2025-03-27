@@ -35,7 +35,6 @@ namespace Food
 		sf::Vector2i getRandomPosition();
 		FoodType getRandomFoodType();
 		bool isValidPosition(std::vector<sf::Vector2i> position_data, sf::Vector2i food_position);
-		void destroyFood();
 		void updateElapsedDuration();
 		void handleFoodSpawning();
 		void reset();
@@ -48,7 +47,9 @@ namespace Food
 		void update();
 		void render();
 
+		bool processFoodCollision(LinkedList::Node* head_node, FoodType& out_food_type);
 		void startFoodSpawning();
 		void stopFoodSpawning();
+		void destroyFood();
 	};
 }

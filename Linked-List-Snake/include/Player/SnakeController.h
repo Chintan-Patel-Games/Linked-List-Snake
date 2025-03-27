@@ -42,6 +42,7 @@ namespace Player
 		void processBodyCollision();
 		void processElementsCollision();
 		void processFoodCollision();
+		void OnFoodCollected(Food::FoodType food_type);
 		void handleRestart();
 		void reset();
 		void delayedUpdate();
