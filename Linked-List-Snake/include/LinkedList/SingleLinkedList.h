@@ -25,6 +25,7 @@ namespace LinkedList
 		void render();
 
 		sf::Vector2i getNewNodePosition(Node* reference_node);
+		std::vector<sf::Vector2i> getNodesPositionList();
 		void insertNodeAtTail();
 		void updateNodeDirection(Player::Direction direction_to_set);
 		void updateNodePosition();

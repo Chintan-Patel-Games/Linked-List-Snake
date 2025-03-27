@@ -87,9 +87,6 @@
     <ClCompile Include="source\UI\LevelSelection\LevelSelectionUIController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Player\PlayerService.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Player\SnakeController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -109,6 +106,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Food\FoodService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player\PlayerService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
