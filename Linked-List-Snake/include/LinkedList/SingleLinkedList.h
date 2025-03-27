@@ -16,6 +16,7 @@ namespace LinkedList
 		Player::Direction default_direction;
 
 		Node* createNode();
+		sf::Vector2i getNewNodePosition(Node* reference_node);
 
 	public:
 		SingleLinkedList();
@@ -24,13 +25,17 @@ namespace LinkedList
 		void initialize(float width, float height, sf::Vector2i position, Player::Direction direction);
 		void render();
 
-		sf::Vector2i getNewNodePosition(Node* reference_node);
-		std::vector<sf::Vector2i> getNodesPositionList();
 		void insertNodeAtTail();
-		void updateNodeDirection(Player::Direction direction_to_set);
-		void updateNodePosition();
-		bool processNodeCollision();
+
 		void removeNodeAtHead();
 		void removeAllNodes();
+
+		void updateNodeDirection(Player::Direction direction_to_set);
+		void updateNodePosition();
+
+		bool processNodeCollision();
+		Node* getHeadNode();
+
+		std::vector<sf::Vector2i> getNodesPositionList();
 	};
 }
