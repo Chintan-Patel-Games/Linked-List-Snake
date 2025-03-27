@@ -73,14 +73,14 @@ namespace UI
 
         void MainMenuUIController::playButtonCallback()
         {
-            // GameState will change to gameplay state.
+            GameService::setGameState(GameState::LEVEL_SELECTION);
             ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
         }
 
         void MainMenuUIController::instructionsButtonCallback()
         {
-            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
             GameService::setGameState(GameState::INSTRUCTIONS);
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
         }
 
         void MainMenuUIController::quitButtonCallback()
