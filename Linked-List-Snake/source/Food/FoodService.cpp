@@ -3,7 +3,6 @@
 #include "Food/FoodItem.h"
 #include "Level/LevelModel.h"
 #include "Player/PlayerService.h"
-#include <LinkedList/Node.h>
 
 namespace Food
 {
