@@ -2,6 +2,7 @@
 #include <vector>
 #include <SFML/System/Vector2.hpp>
 #include "Element/ElementData.h"
+#include "LinkedList/Node.h"
 
 namespace Element
 {

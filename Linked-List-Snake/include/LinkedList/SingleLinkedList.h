@@ -4,6 +4,8 @@
 
 namespace LinkedList
 {
+	enum class Operation { HEAD,MID,TAIL };
+
 	class SingleLinkedList
 	{
 	private:
@@ -16,7 +18,8 @@ namespace LinkedList
 		Player::Direction default_direction;
 
 		Node* createNode();
-		sf::Vector2i getNewNodePosition(Node* reference_node);
+		void initializeNode(Node* new_node, Node* reference_node, Operation operation);
+		sf::Vector2i getNewNodePosition(Node* reference_node, Operation operation);
 
 	public:
 		SingleLinkedList();

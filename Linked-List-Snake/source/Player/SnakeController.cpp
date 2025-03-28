@@ -1,6 +1,5 @@
 #include "Player/SnakeController.h"
 #include "Global/ServiceLocator.h"
-#include "Food/FoodType.h"
 
 namespace Player
 {

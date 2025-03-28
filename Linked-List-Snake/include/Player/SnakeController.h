@@ -2,20 +2,12 @@
 #include <SFML/System/Vector2.hpp>
 #include "Direction.h"
 #include "LinkedList/SingleLinkedList.h"
+#include "Food/FoodType.h"
 
 namespace Player
 {
-	enum class SnakeState
-	{
-		ALIVE,
-		DEAD
-	};
-
-	enum class InputState
-	{
-		WAITING,
-		PROCESSING
-	};
+	enum class SnakeState { ALIVE,DEAD };
+	enum class InputState { WAITING,PROCESSING };
 
 	class SnakeController
 	{
