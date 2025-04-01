@@ -31,7 +31,6 @@ namespace Food
 		float elapsed_duration;
 
 		FoodItem* createFood(sf::Vector2i position, FoodType type);
-		void spawnFood();
 		sf::Vector2i getValidSpawnPosition();
 		sf::Vector2i getRandomPosition();
 		FoodType getRandomFoodType();
@@ -50,6 +49,7 @@ namespace Food
 
 		bool processFoodCollision(LinkedList::Node* head_node, FoodType& out_food_type);
 		void startFoodSpawning();
+		void spawnFood();
 		void stopFoodSpawning();
 		void destroyFood();
 	};
