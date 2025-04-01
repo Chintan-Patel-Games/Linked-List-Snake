@@ -36,6 +36,8 @@ namespace Player
 		}
 	}
 
+	void SnakeController::render() { single_linked_list->render(); }
+
 	void SnakeController::delayedUpdate()
 	{
 		elapsed_duration += Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
@@ -46,14 +48,10 @@ namespace Player
 			updateSnakeDirection();
 			processSnakeCollision();
 			if (current_snake_state == SnakeState::ALIVE)
-			{
 				moveSnake();
-				current_input_state = InputState::WAITING;  // Reset input state after movement
-			}
+			current_input_state = InputState::WAITING;  // Reset input state after movement
 		}
 	}
-
-	void SnakeController::render() { single_linked_list->render(); }
 
 	void SnakeController::processPlayerInput()
 	{
@@ -123,6 +121,7 @@ namespace Player
 			Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::PICKUP);
 
 			food_service->destroyFood();
+			food_service->spawnFood();
 			OnFoodCollected(food_type);
 		}
 	}
