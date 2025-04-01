@@ -47,11 +47,15 @@ namespace LinkedList
 		void removeNodeAtTail();
 		void removeAllNodes();
 
+		Player::Direction reverse();
+		void reverseNodeDirections();
+
 		void updateNodeDirection(Player::Direction direction_to_set);
 		void updateNodePosition();
 
 		bool processNodeCollision();
 
+		Player::Direction getReverseDirection(Player::Direction reference_direction);
 		Node* getHeadNode();
 		int getLinkedListSize();
 		std::vector<sf::Vector2i> getNodesPositionList();
