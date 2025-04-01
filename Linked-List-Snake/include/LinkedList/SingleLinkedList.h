@@ -30,6 +30,8 @@ namespace LinkedList
 		void render();
 
 		void insertNodeAtHead();
+		void insertNodeAtIndex(int index);
+		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
 		void insertNodeAtTail();
 
 		void removeNodeAtHead();
