@@ -41,6 +41,7 @@ namespace LinkedList
 		void removeNodeAtIndex(int index);
 		void shiftNodesAfterRemoval(Node* cur_node);
 		void removeNodeAtMiddle();
+		void removeNodeAtTail();
 		void removeAllNodes();
 
 		void updateNodeDirection(Player::Direction direction_to_set);
