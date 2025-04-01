@@ -37,14 +37,19 @@ namespace LinkedList
 		void insertNodeAtTail();
 
 		void removeNodeAtHead();
+		void removeNodeAt(int index);
+		void removeNodeAtIndex(int index);
+		void shiftNodesAfterRemoval(Node* cur_node);
+		void removeNodeAtMiddle();
 		void removeAllNodes();
 
 		void updateNodeDirection(Player::Direction direction_to_set);
 		void updateNodePosition();
 
 		bool processNodeCollision();
-		Node* getHeadNode();
 
+		Node* getHeadNode();
+		int getLinkedListSize();
 		std::vector<sf::Vector2i> getNodesPositionList();
 	};
 }
