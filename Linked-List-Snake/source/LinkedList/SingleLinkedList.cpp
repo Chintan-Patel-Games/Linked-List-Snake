@@ -207,6 +207,24 @@ namespace LinkedList
 		new_node->body_part.initialize(node_width, node_height, getNewNodePosition(cur_node, Operation::TAIL), cur_node->body_part.getDirection());
 	}
 
+	void SingleLinkedList::removeNodeAtHead()
+	{
+		linked_list_size--;
+		Node* cur_node = head_node;
+		head_node = head_node->next;
+
+		cur_node->next = nullptr;
+		delete (cur_node);
+	}
+
+	void SingleLinkedList::removeAllNodes()
+	{
+		if (head_node == nullptr) return;
+
+		while (head_node != nullptr)
+			removeNodeAtHead();
+	}
+
 	bool SingleLinkedList::processNodeCollision()
 	{
 		if (head_node == nullptr) return false;
@@ -221,23 +239,6 @@ namespace LinkedList
 		}
 
 		return false;
-	}
-
-	void SingleLinkedList::removeNodeAtHead()
-	{
-		Node* cur_node = head_node;
-		head_node = head_node->next;
-
-		cur_node->next = nullptr;
-		delete (cur_node);
-	}
-
-	void SingleLinkedList::removeAllNodes()
-	{
-		if (head_node == nullptr) return;
-
-		while (head_node != nullptr)
-			removeNodeAtHead();
 	}
 
 	Node* SingleLinkedList::getHeadNode() { return head_node; }
