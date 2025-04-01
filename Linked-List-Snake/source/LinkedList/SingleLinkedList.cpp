@@ -44,6 +44,22 @@ namespace LinkedList
 		new_node->body_part.initialize(node_width, node_height, position, reference_node->body_part.getDirection());
 	}
 
+	bool SingleLinkedList::processNodeCollision()
+	{
+		if (head_node == nullptr) return false;
+
+		sf::Vector2i predicted_position = head_node->body_part.getNextPosition();
+
+		Node* cur_node = head_node->next;
+		while (cur_node != nullptr)
+		{
+			if (cur_node->body_part.getNextPosition() == predicted_position) return true;
+			cur_node = cur_node->next;
+		}
+
+		return false;
+	}
+
 	void SingleLinkedList::updateNodeDirection(Player::Direction direction_to_set)
 	{
 		Node* cur_node = head_node;
@@ -68,31 +84,58 @@ namespace LinkedList
 		}
 	}
 
-	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node, Operation operation)
+	int SingleLinkedList::findMiddleNode()
 	{
-		switch (operation)
+		Node* slow = head_node;
+		Node* fast = head_node;
+		int midIndex = 0;  // This will track the index of the middle node.
+
+		// Move fast pointer at 2x speed and slow pointer at 1x speed.
+		while (fast != nullptr && fast->next != nullptr)
 		{
-		case Operation::HEAD:
-			return reference_node->body_part.getNextPosition();
-		case Operation::TAIL:
-			return reference_node->body_part.getPrevPosition();
+			slow = slow->next;
+			fast = fast->next->next;
+			midIndex++;
 		}
 
-		return default_position;
+		// Now, slow is at the middle node
+		return midIndex;
 	}
 
-	std::vector<sf::Vector2i> SingleLinkedList::getNodesPositionList()
+	Node* SingleLinkedList::findNodeAtIndex(int index)
 	{
-		std::vector<sf::Vector2i> nodes_position_list;
+		int current_index = 0;
 		Node* cur_node = head_node;
+		Node* prev_node = nullptr;
+
+		while (cur_node != nullptr && current_index <= index)
+		{
+			prev_node = cur_node;
+			cur_node = cur_node->next;
+			current_index++;
+		}
+
+		return prev_node;
+	}
+
+	void SingleLinkedList::shiftNodesAfterRemoval(Node* cur_node)
+	{
+		sf::Vector2i previous_node_position = cur_node->body_part.getPosition();
+		Player::Direction previous_node_direction = cur_node->body_part.getDirection();
+		cur_node = cur_node->next;
 
 		while (cur_node != nullptr)
 		{
-			nodes_position_list.push_back(cur_node->body_part.getPosition());
-			cur_node = cur_node->next;
-		}
+			sf::Vector2i temp_node_position = cur_node->body_part.getPosition();
+			Player::Direction temp_node_direction = cur_node->body_part.getDirection();
 
-		return nodes_position_list;
+			cur_node->body_part.setPosition(previous_node_position);
+			cur_node->body_part.setDirection(previous_node_direction);
+
+			cur_node = cur_node->next;
+			previous_node_position = temp_node_position;
+			previous_node_direction = temp_node_direction;
+		}
 	}
 
 	void SingleLinkedList::insertNodeAtHead()
@@ -157,24 +200,6 @@ namespace LinkedList
 		}
 
 		initializeNode(cur_node, prev_node, Operation::TAIL);
-	}
-
-	int SingleLinkedList::findMiddleNode()
-	{
-		Node* slow = head_node;
-		Node* fast = head_node;
-		int midIndex = 0;  // This will track the index of the middle node.
-
-		// Move fast pointer at 2x speed and slow pointer at 1x speed.
-		while (fast != nullptr && fast->next != nullptr)
-		{
-			slow = slow->next;
-			fast = fast->next->next;
-			midIndex++;
-		}
-
-		// Now, slow is at the middle node
-		return midIndex;
 	}
 
 	void SingleLinkedList::insertNodeAtMiddle()
@@ -247,32 +272,33 @@ namespace LinkedList
 		linked_list_size--;
 	}
 
-	void SingleLinkedList::shiftNodesAfterRemoval(Node* cur_node)
-	{
-		sf::Vector2i previous_node_position = cur_node->body_part.getPosition();
-		Player::Direction previous_node_direction = cur_node->body_part.getDirection();
-		cur_node = cur_node->next;
-
-		while (cur_node != nullptr)
-		{
-			sf::Vector2i temp_node_position = cur_node->body_part.getPosition();
-			Player::Direction temp_node_direction = cur_node->body_part.getDirection();
-
-			cur_node->body_part.setPosition(previous_node_position);
-			cur_node->body_part.setDirection(previous_node_direction);
-
-			cur_node = cur_node->next;
-			previous_node_position = temp_node_position;
-			previous_node_direction = temp_node_direction;
-		}
-	}
-
 	void SingleLinkedList::removeNodeAtMiddle()
 	{
 		if (head_node == nullptr) return;	// If the list is empty, there's nothing to remove
 
 		int midIndex = findMiddleNode();    // Use the existing function to find the middle index
 		removeNodeAt(midIndex);        // Use the existing function to insert the node at the found index             
+	}
+
+	void SingleLinkedList::removeHalfNodes()
+	{
+		if (linked_list_size <= 1) return;
+		int half_length = linked_list_size / 2;
+		int new_tail_index = half_length - 1;
+
+		Node* prev_node = findNodeAtIndex(new_tail_index);
+		Node* cur_node = prev_node->next;
+
+		while (cur_node != nullptr)
+		{
+			Node* node_to_delete = cur_node;
+			cur_node = cur_node->next;
+
+			delete (node_to_delete);
+			linked_list_size--;
+		}
+
+		prev_node->next = nullptr;
 	}
 
 	void SingleLinkedList::removeNodeAtTail()
@@ -303,20 +329,31 @@ namespace LinkedList
 		while (head_node != nullptr) removeNodeAtHead();
 	}
 
-	bool SingleLinkedList::processNodeCollision()
+	sf::Vector2i SingleLinkedList::getNewNodePosition(Node* reference_node, Operation operation)
 	{
-		if (head_node == nullptr) return false;
+		switch (operation)
+		{
+		case Operation::HEAD:
+			return reference_node->body_part.getNextPosition();
+		case Operation::TAIL:
+			return reference_node->body_part.getPrevPosition();
+		}
 
-		sf::Vector2i predicted_position = head_node->body_part.getNextPosition();
+		return default_position;
+	}
 
-		Node* cur_node = head_node->next;
+	std::vector<sf::Vector2i> SingleLinkedList::getNodesPositionList()
+	{
+		std::vector<sf::Vector2i> nodes_position_list;
+		Node* cur_node = head_node;
+
 		while (cur_node != nullptr)
 		{
-			if (cur_node->body_part.getNextPosition() == predicted_position) return true;
+			nodes_position_list.push_back(cur_node->body_part.getPosition());
 			cur_node = cur_node->next;
 		}
 
-		return false;
+		return nodes_position_list;
 	}
 
 	Node* SingleLinkedList::getHeadNode() { return head_node; }

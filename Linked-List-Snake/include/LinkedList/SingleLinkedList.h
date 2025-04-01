@@ -29,18 +29,21 @@ namespace LinkedList
 		void initialize(float width, float height, sf::Vector2i position, Player::Direction direction);
 		void render();
 
+		int findMiddleNode();
+		Node* findNodeAtIndex(int index);
+		void shiftNodesAfterRemoval(Node* cur_node);
+
 		void insertNodeAtHead();
 		void insertNodeAtIndex(int index);
 		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
-		int findMiddleNode();
 		void insertNodeAtMiddle();
 		void insertNodeAtTail();
 
 		void removeNodeAtHead();
 		void removeNodeAt(int index);
 		void removeNodeAtIndex(int index);
-		void shiftNodesAfterRemoval(Node* cur_node);
 		void removeNodeAtMiddle();
+		void removeHalfNodes();
 		void removeNodeAtTail();
 		void removeAllNodes();
 
