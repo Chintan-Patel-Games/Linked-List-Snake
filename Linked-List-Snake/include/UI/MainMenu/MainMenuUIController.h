@@ -1,5 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "UI/Interface/IUIController.h"
 #include "UI/UIElement/ImageView.h"
 #include "UI/UIElement/ButtonView.h"

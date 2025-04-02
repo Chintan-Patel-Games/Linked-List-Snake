@@ -28,5 +28,6 @@ namespace Level
 
 		float getCellWidth() const;
 		float getCellHeight() const;
+        LevelNumber getCurrentLevel() const;
     };
 }
