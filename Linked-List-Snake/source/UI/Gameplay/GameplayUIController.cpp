@@ -159,7 +159,6 @@ namespace UI
 
         void GameplayUIController::render()
         {
-			std::cout << "Rendering Gameplay UI" << std::endl;
             level_number_text->render();
             score_text->render();
 			time_complexity_text->render();
