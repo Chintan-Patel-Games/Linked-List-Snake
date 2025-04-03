@@ -5,11 +5,11 @@ namespace LinkedListLib
 {
 	namespace DoubleLinked
 	{
+        Node* DoubleLinkedList::createNode() { return new DoubleNode(); }
+
         DoubleLinkedList::DoubleLinkedList() = default;
 
         DoubleLinkedList::~DoubleLinkedList() = default;
-
-        Node* DoubleLinkedList::createNode() { return new DoubleNode(); }
 
         void DoubleLinkedList::insertNodeAtHead()
         {
@@ -113,6 +113,19 @@ namespace LinkedListLib
             }
 
             initializeNode(cur_node, prev_node, Operation::TAIL);
+        }
+
+        void DoubleLinkedList::removeNodeAtHead()
+        {
+            linked_list_size--;
+
+            Node* cur_node = head_node;
+            head_node = head_node->next;
+
+            if (head_node != nullptr) static_cast<DoubleNode*>(head_node)->previous = nullptr;
+
+            cur_node->next = nullptr;
+            delete cur_node;
         }
 	}
 }

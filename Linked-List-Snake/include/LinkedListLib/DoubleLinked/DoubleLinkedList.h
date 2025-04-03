@@ -14,14 +14,14 @@ namespace LinkedListLib
 			DoubleLinkedList();
 			~DoubleLinkedList();
 
-			void insertNodeAtTail() override;
 			void insertNodeAtHead() override;
+			void insertNodeAtTail() override;
 			void insertNodeAtMiddle() override;
 			void insertNodeAtIndex(int index) override;
 			void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
 
-			void removeNodeAtTail() override;
 			void removeNodeAtHead() override;
+			void removeNodeAtTail() override;
 			void removeNodeAtMiddle() override;
 			void removeNodeAt(int index) override;
 			void removeNodeAtIndex(int index);
