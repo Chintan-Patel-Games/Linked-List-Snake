@@ -1,5 +1,6 @@
 #include "LinkedListLib/DoubleLinked/DoubleLinkedList.h"
 #include "LinkedListLib/DoubleLinked/DoubleNode.h"
+#include <iostream>
 
 namespace LinkedListLib
 {
@@ -191,6 +192,35 @@ namespace LinkedListLib
             delete(cur_node);
         }
 
+        void DoubleLinkedList::removeAllNodes()
+        {
+            if (head_node == nullptr) return;
+            while (head_node != nullptr) removeNodeAtHead();
+        }
+
+        void DoubleLinkedList::removeHalfNodes()
+        {
+            if (linked_list_size <= 1) return;
+            int half_length = linked_list_size / 2;
+            int new_tail_index = half_length - 1;
+
+            std::cout << linked_list_size << ", " << new_tail_index;
+
+            Node* prev_node = findNodeAtIndex(new_tail_index);
+            Node* cur_node = prev_node->next;
+
+            while (cur_node != nullptr)
+            {
+                Node* node_to_delete = cur_node;
+                cur_node = cur_node->next;
+
+                delete (node_to_delete);
+                linked_list_size--;
+            }
+
+            prev_node->next = nullptr;
+        }
+
         void DoubleLinkedList::shiftNodesAfterRemoval(Node* cur_node)
         {
             sf::Vector2i previous_node_position = cur_node->body_part.getPosition();
@@ -209,12 +239,6 @@ namespace LinkedListLib
                 previous_node_position = temp_node_position;
                 previous_node_direction = temp_node_direction;
             }
-        }
-
-        void DoubleLinkedList::removeAllNodes()
-        {
-            if (head_node == nullptr) return;
-            while (head_node != nullptr) removeNodeAtHead();
         }
 	}
 }
