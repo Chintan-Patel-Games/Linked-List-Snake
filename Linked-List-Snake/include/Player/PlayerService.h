@@ -27,13 +27,13 @@ namespace Player
 
 		void spawnPlayer(LinkedListType level_type);
 
+		bool isSnakeSizeMinimum();
+		bool isPlayerDead();
 		int getPlayerScore() const;
 		std::vector<sf::Vector2i> getCurrentSnakePositionList() const;
 		TimeComplexity getTimeComplexity() const;
 		LinkedListOperations getLastOperation() const;
 		int getSnakeSize();
-		bool isSnakeSizeMinimum();
-		bool isPlayerDead();
 		SnakeState getSnakeState();
 	};
 }
