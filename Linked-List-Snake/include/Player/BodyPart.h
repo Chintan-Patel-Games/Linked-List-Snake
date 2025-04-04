@@ -1,7 +1,7 @@
 #pragma once
-#include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics.hpp>
 #include "UI/UIElement/ImageView.h"
-#include "Player/Direction.h"
+#include "Direction.h"
 
 namespace Player
 {
@@ -11,7 +11,6 @@ namespace Player
 		UI::UIElement::ImageView* bodypart_image;
 
 		sf::Vector2i grid_position;
-		sf::Vector2f screen_position;
 		Direction direction;
 		Direction previous_direction;
 
@@ -20,6 +19,13 @@ namespace Player
 
 		void createBodyPartImage();
 		void initializeBodyPartImage();
+		sf::Vector2f getBodyPartScreenPosition();
+		float getRotationAngle();
+		sf::Vector2i getNextPositionUp();
+		sf::Vector2i getNextPositionDown();
+		sf::Vector2i getNextPositionLeft();
+		sf::Vector2i getNextPositionRight();
+
 		void destroy();
 
 	public:
@@ -27,24 +33,15 @@ namespace Player
 		~BodyPart();
 
 		void initialize(float width, float height, sf::Vector2i pos, Direction dir);
+		void updatePosition();
 		void render();
 
-		void updatePosition();
-
-		sf::Vector2f getBodyPartScreenPosition();
-		float getRotationAngle();
 		Direction getDirection();
 		Direction getPreviousDirection();
 		void setDirection(Direction direction);
-
-		void move();
-		sf::Vector2i getPrevPosition();
 		sf::Vector2i getPosition();
-		sf::Vector2i getNextPosition();
-		sf::Vector2i getNextPositionUp();
-		sf::Vector2i getNextPositionDown();
-		sf::Vector2i getNextPositionLeft();
-		sf::Vector2i getNextPositionRight();
 		void setPosition(sf::Vector2i position);
+		sf::Vector2i getNextPosition();
+		sf::Vector2i getPrevPosition();
 	};
 }

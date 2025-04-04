@@ -14,12 +14,14 @@ namespace Level
 
 	void LevelService::createLevelController() { level_controller = new LevelController(); }
 
-	void LevelService::spawnPlayer() { Global::ServiceLocator::getInstance()->getPlayerService()->spawnPlayer(); }
+	void LevelService::spawnPlayer() { Global::ServiceLocator::getInstance()->getPlayerService()->spawnPlayer(current_linked_list_type); }
 
 	void LevelService::spawnFood() { Global::ServiceLocator::getInstance()->getFoodService()->startFoodSpawning(); }
 
 	void LevelService::spawnLevelElements(LevelNumber level_to_load)
 	{
+		current_level = level_to_load;
+
 		float cell_width = level_controller->getCellWidth();
 		float cell_height = level_controller->getCellHeight();
 
@@ -33,10 +35,10 @@ namespace Level
 
 	void LevelService::render() { level_controller->render(); }
 
-	void LevelService::createLevel(LevelNumber level_to_load)
+	void LevelService::createLevel(LinkedListType linked_list_type)
 	{
-		current_level = level_to_load;
-		spawnLevelElements(level_to_load);
+		current_linked_list_type = linked_list_type;
+		spawnLevelElements(current_level);
 		spawnPlayer();
 		spawnFood();
 	}
@@ -46,6 +48,10 @@ namespace Level
 	float LevelService::getCellHeight() const { return level_controller->getCellHeight(); }
 
 	LevelNumber LevelService::getCurrentLevel() const { return current_level; }
+
+	void LevelService::setCurrentLevel(LevelNumber level_to_load) { current_level = level_to_load; }
+
+	LinkedListType LevelService::getCurrentLinkedListType() const { return current_linked_list_type; }
 
 	void LevelService::destroy() { delete level_controller; }
 }

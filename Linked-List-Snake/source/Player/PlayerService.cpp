@@ -19,11 +19,15 @@ namespace Player
 
 	void PlayerService::render() { snake_controller->render(); }
 
-	void PlayerService::spawnPlayer() { snake_controller->spawnSnake(); }
-
-	std::vector<sf::Vector2i> PlayerService::getCurrentSnakePositionList() const { return snake_controller->getCurrentSnakePositionList(); }
+	void PlayerService::spawnPlayer(LinkedListType level_type)
+	{
+		snake_controller->createLinkedList(level_type);
+		snake_controller->spawnSnake();
+	}
 
 	int PlayerService::getPlayerScore() const { return snake_controller->getPlayerScore(); }
+
+	std::vector<sf::Vector2i> PlayerService::getCurrentSnakePositionList() const { return snake_controller->getCurrentSnakePositionList(); }
 
 	TimeComplexity PlayerService::getTimeComplexity() const { return snake_controller->getTimeComplexity(); }
 

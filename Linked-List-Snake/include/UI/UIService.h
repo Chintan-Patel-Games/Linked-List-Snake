@@ -1,6 +1,7 @@
 #pragma once
 #include "UI/MainMenu/MainMenuUIController.h"
 #include "UI/LevelSelection/LevelSelectionUIController.h"
+#include "LinkedListSelection/LinkedListSelectionUIController.h"
 #include "UI/Gameplay/GameplayUIController.h"
 #include "UI/SplashScreen/SplashScreenUIController.h"
 #include "Instructions/InstructionsScreenUIController.h"
@@ -15,6 +16,7 @@ namespace UI
 		SplashScreen::SplashScreenUIController* splash_screen_controller;
 		MainMenu::MainMenuUIController* main_menu_controller;
 		LevelSelection::LevelSelectionUIController* level_selection_controller;
+		LinkedListSelection::LinkedListSelectionUIController* linked_list_selection_ui_controller;
 		GameplayUI::GameplayUIController* gameplay_ui_controller;
 		Instructions::InstructionsScreenUIController* instructions_screen_ui_controller;
 		Credits::CreditsScreenUIController* credits_screen_ui_controller;

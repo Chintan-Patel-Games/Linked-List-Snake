@@ -244,5 +244,16 @@ namespace LinkedListLib
             reverseNodeDirections();
             return head_node->body_part.getDirection();
         }
+
+        void SingleLinkedList::reverseNodeDirections()
+        {
+            Node* curr_node = head_node;
+
+            while (curr_node != nullptr)
+            {
+                curr_node->body_part.setDirection(getReverseDirection(curr_node->body_part.getPreviousDirection()));
+                curr_node = curr_node->next;
+            }
+        }
     }
 }

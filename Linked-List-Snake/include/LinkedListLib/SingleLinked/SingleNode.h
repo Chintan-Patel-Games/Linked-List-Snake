@@ -6,7 +6,6 @@ namespace LinkedListLib
 	namespace SingleLinked
 	{
 		struct SingleNode : public Node
-		{
-		};
+		{};
 	}
 }
