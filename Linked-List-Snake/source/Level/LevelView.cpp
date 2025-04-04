@@ -1,5 +1,7 @@
 #include "Level/LevelView.h"
 #include "Global/ServiceLocator.h"
+#include "Graphics/GraphicService.h"
+#include "UI/UIElement/RectangleShapeView.h"
 
 namespace Level
 {
@@ -47,12 +49,6 @@ namespace Level
         grid_height = game_window->getSize().y - border_offset_top - border_offset_bottom;  // Adjusted to new top and bottom offsets
     }
 
-    void LevelView::destroy()
-    {
-        delete (background_rectangle);
-        delete (border_rectangle);
-    }
-
     void LevelView::update()
     {
         background_rectangle->update();
@@ -68,4 +64,10 @@ namespace Level
     float LevelView::getGridWidth() const { return grid_width; }
 
     float LevelView::getGridHeight() const { return grid_height; }
+
+    void LevelView::destroy()
+    {
+        delete (background_rectangle);
+        delete (border_rectangle);
+    }
 }

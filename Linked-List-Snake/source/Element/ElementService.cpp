@@ -3,7 +3,7 @@
 #include "Global/ServiceLocator.h"
 #include "Level/LevelController.h"
 #include "Element/Obstacle.h"
-#include <LinkedList/Node.h>
+#include "LinkedListLib/Node.h"
 
 namespace Element
 {
@@ -53,7 +53,7 @@ namespace Element
 		return elements_position_list;
 	}
 
-	bool ElementService::processElementsCollision(LinkedList::Node* head_node)
+	bool ElementService::processElementsCollision(LinkedListLib::Node* head_node)
 	{
 		for (int i = 0; i < obstacle_list.size(); i++)
 		{

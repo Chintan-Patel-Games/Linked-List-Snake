@@ -60,7 +60,7 @@ namespace Food
 		sf::Vector2i spawn_position;
 
 		do spawn_position = getRandomPosition();
-		while (!isValidPosition(player_position_data, spawn_position) || !isValidPosition(elements_position_data, spawn_position));
+		while (!isValidPosition(player_position_data, elements_position_data, spawn_position));
 
 		return spawn_position;
 	}
@@ -83,9 +83,12 @@ namespace Food
 		return static_cast<FoodType>(distribution(random_engine));
 	}
 
-	bool FoodService::isValidPosition(std::vector<sf::Vector2i> position_data, sf::Vector2i food_position)
+	bool FoodService::isValidPosition(std::vector<sf::Vector2i> position_data, std::vector<sf::Vector2i> elements_position_data, sf::Vector2i food_position)
 	{
 		for (int i = 0; i < position_data.size(); i++) { if (food_position == position_data[i]) return false; }
+
+		for (int i = 0; i < elements_position_data.size(); i++) { if (food_position == elements_position_data[i]) return false; }
+
 		return true;
 	}
 
@@ -105,7 +108,7 @@ namespace Food
 
 	void FoodService::reset() { elapsed_duration = 0.f; }
 
-	bool FoodService::processFoodCollision(LinkedList::Node* head_node, FoodType& out_food_type)
+	bool FoodService::processFoodCollision(LinkedListLib::Node* head_node, FoodType& out_food_type)
 	{
 		if (current_food_item && current_food_item->getFoodPosition() == head_node->body_part.getPosition())
 		{
