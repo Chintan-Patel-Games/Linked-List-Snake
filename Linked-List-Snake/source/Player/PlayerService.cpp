@@ -25,6 +25,8 @@ namespace Player
 		snake_controller->spawnSnake();
 	}
 
+	bool PlayerService::isPlayerDead() { return snake_controller->isSnakeDead(); }
+
 	int PlayerService::getPlayerScore() const { return snake_controller->getPlayerScore(); }
 
 	std::vector<sf::Vector2i> PlayerService::getCurrentSnakePositionList() const { return snake_controller->getCurrentSnakePositionList(); }

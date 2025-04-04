@@ -264,7 +264,6 @@ namespace Player
 
 	bool SnakeController::isSnakeDead() { return current_snake_state == SnakeState::DEAD; }
 
-
 	int SnakeController::getRandomBodyPartIndex() { return std::rand() % (linked_list->getLinkedListSize() - 1); }
 
 	std::vector<sf::Vector2i> SnakeController::getCurrentSnakePositionList() {  return linked_list->getNodesPositionList(); }
