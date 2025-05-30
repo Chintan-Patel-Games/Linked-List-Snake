@@ -1,10 +1,10 @@
 # 🐍 Linked List Snake
 
-**Linked-List-Snake** is a 2D Unity-based twist on the classic Snake game that integrates core computer science concepts. This project showcases the practical use of **Singly Linked Lists** and **Doubly Linked Lists** within gameplay mechanics.
+A console-based version of the classic **Snake** game implemented in C++. This project uniquely integrates **Linked List** and **Doubly Linked List** data structures to represent the snake and simulate operations based on the food it consumes.
 
 ## 🎮 Gameplay Features
 
-- Built with **Unity 2D**
+- Console-based interface with keyboard input
 - Classic snake movement and growth
 - Different food types trigger unique linked list operations
 - Game over on self-collision
@@ -24,30 +24,28 @@ This project uses:
   - ☠️ Poison - Delete half nodes
   - 🍷 Alcohol - Reverse Direction
 
-Each food item maps to a specific **linked list operation**, turning gameplay into a fun data structure demo.
+- Each food item maps to a specific **linked list operation**, turning gameplay into a fun data structure demo.
 
 ## 🛠️ Technologies Used
 
-- **Unity Engine (2D)**
-- **C#**
+- C++
 - Object-Oriented Programming (OOP)
-- Linked List data structure implementation
+- SFML
 
-## 🚀 How to Run the Game
+## 🚀 How to Run
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Chintan-Patel-Games/Linked-List-Snake.git
-   ```
+  ### Steps
 
-2. Open the project in Unity Hub.
-
-3. Open the main scene and click ▶️ to play.
+  ```bash
+  git clone https://github.com/Chintan-Patel-Games/Linked-List-Snake.git
+  ```
+  
+  - Run the game
 
 ## 📚 Concepts Demonstrated
 
-- Unity 2D development
-- Singly and doubly linked list integration
-- Collision detection and movement logic
-- Object-oriented design patterns in Unity
-- Keyboard input handling
+- Singly and Doubly Linked Lists
+- Dynamic memory management
+- Collision detection
+- Input handling and game loop structure
+- Encapsulation and modular design using C++
