@@ -1,10 +1,10 @@
 # 🐍 Linked List Snake
 
-A console-based version of the classic **Snake** game implemented in C++. This project uniquely integrates **Linked List** and **Doubly Linked List** data structures to represent the snake and simulate operations based on the food it consumes.
+A SFML-based version of the classic **Snake** game implemented in C++. This project uniquely integrates **Linked List** and **Doubly Linked List** data structures to represent the snake and simulate operations based on the food it consumes.
 
 ## 🎮 Gameplay Features
 
-- Console-based interface with keyboard input
+- SFML-based interface with keyboard input
 - Classic snake movement and growth
 - Different food types trigger unique linked list operations
 - Game over on self-collision
